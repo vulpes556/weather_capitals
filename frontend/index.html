@@ -10,12 +10,15 @@
 	<!-- RUN: node backend/server.js -->
 	<div id="root">
 		<div>
-			<ul id = "capital-list"></ul>
+			<div  id="weather-details">
+			</div>
+			<ul id = "border-list"></ul>
 		</div>
-		<div  id="weather-details"></div>
 		<div class="navigation-container">
 			<button id="prev-btn">Previous</button>
-			<select name="" id="capital-selector"></select>
+			<select name="" id="capital-selector" placeholder = "Capital city">
+				<option value="" selected disabled hidden>Capital city</option>
+			</select>
 			<button id="next-btn">Next</button>
 		</div>
 	</div>
