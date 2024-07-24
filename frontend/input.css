@@ -1,21 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body{
-   background-image: url(https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/funny-cat-seamless-pattern-children-fabric-hand-drawn-illustration-of-cute-kitten-pet-and-tropical-fruits-bananas-liem-duy.jpg);
-   background-repeat: repeat;
+body {
+    background-image: url(https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/funny-cat-seamless-pattern-children-fabric-hand-drawn-illustration-of-cute-kitten-pet-and-tropical-fruits-bananas-liem-duy.jpg);
+    background-repeat: repeat;
 }
-#map{
-   min-height: 200px;
-   min-width: 200px;
-   height: 40vh;
-   width: 40vw;
+#map {
+    min-height: 200px;
+    min-width: 200px;
+    height: 40vh;
+    width: 40vw;
 }
-.blinking{
-   animation: blink 1s infinite;
+.triangle{
+   clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+}
+.blinking {
+    animation: blink 0.75s 1
 }
 @keyframes blink {
-   0%{opacity: 1;}
-   50%{opacity: 0;}
-   100%{opacity: 1;}
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+
+    }
 }

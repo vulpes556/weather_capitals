@@ -17,29 +17,29 @@
 <body>
 	<!-- RUN: node backend/server.js -->
 	<div class="flex flex-row justify-center items-center gap-3 mt-16">
-		<div class="flex flex-wrap h-[40vh] w-[40vw] bg-custom-gradient rounded-abstract-shape-2 flex-col items-center content-center text-center shadow-xl">
+		<div id = "content-details" class="flex flex-wrap h-[40vh] w-[40vw] bg-custom-gradient rounded-abstract-shape-2 flex-col items-center content-center text-center shadow-xl justify-center">
 			<div  id="weather-details">
 			</div>
 			
 			<div id="currency-div"></div>
-			<div class="p-2">
-				<ul id = "border-list" class="pl-5 space-y-3 list-disc marker:text-cat-brown" ></ul>
-			</div>
 		</div>
 		<div id = "map" class="rounded-abstract-shape-1" ></div>
 	</div>
-	<div class="flex flex-row justify-center items-center mt-3">
-		<img src="" alt="" id = "flag" class="rounded-oval">
+	<div class="flex flex-col justify-center items-center mt-3">
+		<img src="" alt="" id = "flag" class="triangle h-[8vh]" >
+	</div>
+	<div class="p-20 flex justify-center" >
+		<ul id = "border-list" class="w-3/4 flex flex-wrap justify-around bg-yellow-300 pl-3 marker:text-cat-brown" ></ul>
 	</div>
 		
 		<!-- <div id = "map" class="rounded-full" ></div> -->
 		<div id="navigation-container" class = "fixed z-50 bottom-0 w-full text-lg bg-amber-100 border-t border-green-300">
 			<div class = "grid grid-cols-3 gap-2 p-1 mx-auto my-auto rounded-lg bg-yellow-300 w-3/4">
-			<button id="prev-btn" class = "px-5 py-1.5 text-sm font-bold text-white hover:bg-orange-400 rounded-lg">Previous</button>
+			<button id="prev-btn" class = "px-5 py-1.5 text-sm font-bold text-white hover:bg-orange-400 rounded-lg disabled:cursor-not-allowed">Previous</button>
 			<select name="" id="capital-selector"class="bg-green text-sm rounded-lg p-2.5 font-bold text-yellow-300" placeholder = "Capital city">
 				<option value="" selected disabled hidden>Capital city</option>
 			</select>
-			<button id="next-btn" class = "px-5 py-1.5 text-sm font-bold text-white hover:bg-orange-400 rounded-lg">Next</button>
+			<button id="next-btn" class = "px-5 py-1.5 text-sm font-bold text-white hover:bg-orange-400 rounded-lg disabled:cursor-not-allowed">Next</button>
 		</div>
 		</div>
 </body>

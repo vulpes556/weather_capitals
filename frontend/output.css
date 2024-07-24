@@ -604,6 +604,10 @@ video {
   height: 40vh;
 }
 
+.h-\[8vh\] {
+  height: 8vh;
+}
+
 .w-3\/4 {
   width: 75%;
 }
@@ -657,18 +661,16 @@ video {
   justify-content: center;
 }
 
+.justify-around {
+  justify-content: space-around;
+}
+
 .gap-2 {
   gap: 0.5rem;
 }
 
 .gap-3 {
   gap: 0.75rem;
-}
-
-.space-y-3 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
 }
 
 .rounded-abstract-shape-1 {
@@ -687,8 +689,8 @@ video {
   border-radius: 0.5rem;
 }
 
-.rounded-oval {
-  border-radius: 50%;
+.border {
+  border-width: 1px;
 }
 
 .border-t {
@@ -718,12 +720,12 @@ video {
   padding: 0.25rem;
 }
 
-.p-2 {
-  padding: 0.5rem;
-}
-
 .p-2\.5 {
   padding: 0.625rem;
+}
+
+.p-20 {
+  padding: 5rem;
 }
 
 .px-5 {
@@ -736,8 +738,8 @@ video {
   padding-bottom: 0.375rem;
 }
 
-.pl-5 {
-  padding-left: 1.25rem;
+.pl-3 {
+  padding-left: 0.75rem;
 }
 
 .text-center {
@@ -779,32 +781,36 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-body{
+body {
   background-image: url(https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/funny-cat-seamless-pattern-children-fabric-hand-drawn-illustration-of-cute-kitten-pet-and-tropical-fruits-bananas-liem-duy.jpg);
   background-repeat: repeat;
 }
 
-#map{
+#map {
   min-height: 200px;
   min-width: 200px;
   height: 40vh;
   width: 40vw;
 }
 
-.blinking{
-  animation: blink 1s infinite;
+.triangle{
+  clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+}
+
+.blinking {
+  animation: blink 0.75s 1
 }
 
 @keyframes blink {
-  0%{
+  0% {
     opacity: 1;
   }
 
-  50%{
-    opacity: 0;
+  50% {
+    opacity: 0.5;
   }
 
-  100%{
+  100% {
     opacity: 1;
   }
 }
@@ -824,4 +830,8 @@ body{
 
 .hover\:underline:hover {
   text-decoration-line: underline;
+}
+
+.disabled\:cursor-not-allowed:disabled {
+  cursor: not-allowed;
 }
