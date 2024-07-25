@@ -600,20 +600,36 @@ video {
   display: none;
 }
 
-.h-\[40vh\] {
-  height: 40vh;
+.h-3 {
+  height: 0.75rem;
+}
+
+.h-\[27vh\] {
+  height: 27vh;
+}
+
+.h-\[35vh\] {
+  height: 35vh;
 }
 
 .h-\[8vh\] {
   height: 8vh;
 }
 
+.w-1\/2 {
+  width: 50%;
+}
+
 .w-3\/4 {
   width: 75%;
 }
 
-.w-\[40vw\] {
-  width: 40vw;
+.w-\[21vw\] {
+  width: 21vw;
+}
+
+.w-\[35vw\] {
+  width: 35vw;
 }
 
 .w-\[fit-content\] {
@@ -629,12 +645,12 @@ video {
   cursor: pointer;
 }
 
-.list-disc {
-  list-style-type: disc;
-}
-
 .grid-cols-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .flex-row {
@@ -651,6 +667,10 @@ video {
 
 .content-center {
   align-content: center;
+}
+
+.content-baseline {
+  align-content: baseline;
 }
 
 .items-center {
@@ -673,6 +693,14 @@ video {
   gap: 0.75rem;
 }
 
+.gap-1 {
+  gap: 0.25rem;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
 .rounded-abstract-shape-1 {
   border-radius: 9999px 0 9999px 0;
 }
@@ -689,6 +717,14 @@ video {
   border-radius: 0.5rem;
 }
 
+.rounded-bl-full {
+  border-bottom-left-radius: 9999px;
+}
+
+.rounded-br-full {
+  border-bottom-right-radius: 9999px;
+}
+
 .border {
   border-width: 1px;
 }
@@ -702,14 +738,19 @@ video {
   background-color: rgb(254 243 199 / var(--tw-bg-opacity));
 }
 
+.bg-banana-yellow {
+  --tw-bg-opacity: 1;
+  background-color: rgb(238 250 64 / var(--tw-bg-opacity));
+}
+
+.bg-cat-blue {
+  --tw-bg-opacity: 1;
+  background-color: rgb(184 222 243 / var(--tw-bg-opacity));
+}
+
 .bg-green {
   --tw-bg-opacity: 1;
   background-color: rgb(104 141 110 / var(--tw-bg-opacity));
-}
-
-.bg-yellow-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(253 224 71 / var(--tw-bg-opacity));
 }
 
 .bg-custom-gradient {
@@ -760,6 +801,11 @@ video {
   font-weight: 700;
 }
 
+.text-cat-dark-gray {
+  --tw-text-opacity: 1;
+  color: rgb(46 46 46 / var(--tw-text-opacity));
+}
+
 .text-green {
   --tw-text-opacity: 1;
   color: rgb(104 141 110 / var(--tw-text-opacity));
@@ -781,16 +827,22 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.shadow-black {
+  --tw-shadow-color: #000;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
 body {
   background-image: url(https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/funny-cat-seamless-pattern-children-fabric-hand-drawn-illustration-of-cute-kitten-pet-and-tropical-fruits-bananas-liem-duy.jpg);
+  background-size: 562.5px 315.875px;
   background-repeat: repeat;
 }
 
 #map {
   min-height: 200px;
   min-width: 200px;
-  height: 40vh;
-  width: 40vw;
+  height: 35vh;
+  width: 35vw;
 }
 
 .triangle{
@@ -815,17 +867,9 @@ body {
   }
 }
 
-.marker\:text-cat-brown *::marker {
-  color: rgb(146 93 75 );
-}
-
-.marker\:text-cat-brown::marker {
-  color: rgb(146 93 75 );
-}
-
-.hover\:bg-orange-400:hover {
+.hover\:bg-cat-orange:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(251 146 60 / var(--tw-bg-opacity));
+  background-color: rgb(208 125 75 / var(--tw-bg-opacity));
 }
 
 .hover\:underline:hover {

@@ -25,6 +25,7 @@ module.exports = {
         'abstract-shape-2': '0 9999px 0 9999px',
         'abstract-shape-3': '0 9999px 9999px 0',
         'abstract-shape-4': '9999px 0 0 9999px',
+        'abstract-shape-5': '7000px 7000px 1rem 1rem',
         'oval': '50%'
       }
     },

@@ -3,13 +3,14 @@
 @tailwind utilities;
 body {
     background-image: url(https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/funny-cat-seamless-pattern-children-fabric-hand-drawn-illustration-of-cute-kitten-pet-and-tropical-fruits-bananas-liem-duy.jpg);
+    background-size: 562.5px 315.875px;
     background-repeat: repeat;
 }
 #map {
     min-height: 200px;
     min-width: 200px;
-    height: 40vh;
-    width: 40vw;
+    height: 35vh;
+    width: 35vw;
 }
 .triangle{
    clip-path: polygon(0% 100%, 50% 0%, 100% 100%);

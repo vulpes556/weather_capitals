@@ -14,7 +14,7 @@ const displayMapImage = (fetchedCountry) => {
     // Extract markers from geoDataCountries
     const markers = geoDataCountries.reduce((acc, country) => {
         if (country.capital && country.capitalInfo.latlng) {
-            acc.push([country.cca3, country.capitalInfo.latlng]);
+            acc.push([country.cca3, country.capital[0], country.capitalInfo.latlng]);
         }
         return acc;
     }, []);
@@ -39,13 +39,13 @@ const displayMapImage = (fetchedCountry) => {
     }).addTo(map);
 
     // Add markers to the map
-    markers.forEach(([cca3, latlng]) => {
+    markers.forEach(([cca3,capital ,latlng]) => {
         const banana_cat = L.icon({
             iconUrl: "./banana_cat.png",
             iconSize: [70, 70], // size of the icon
             iconAnchor: [70, 70], // point of the icon which will correspond to marker's location
             popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
-            className: `${cca3}`,
+            className: `${cca3} ${capital}`,
         });
         L.marker(latlng, { icon: banana_cat }).addTo(map);
     });
@@ -99,7 +99,7 @@ const showCountryList = (countryList) => {
     selectorOptions = selectorOptions.join("")
 
     // Set the innerHTML of the CAPITAL_SELECTOR element to the generated <option> elements string
-    CAPITAL_SELECTOR.innerHTML = selectorOptions
+    CAPITAL_SELECTOR.innerHTML += selectorOptions
 };
 
 /**
@@ -124,9 +124,7 @@ async function fetchCountryDetails(countryCode) {
 const showBorderList = async (selectedCountry) => {
     // Clear the existing border list
     document.getElementById("border-list").innerHTML = "";
-    document.getElementById("border-list").innerHTML =
-        "<h4>Neighbouring countries:</h4>";
-
+    
     // If there are no bordering countries, display a message
     if (selectedCountry.borders.length === 0) {
         document.getElementById("border-list").innerHTML +=
@@ -145,8 +143,9 @@ const showBorderList = async (selectedCountry) => {
         const liElement = document.createElement("li");
         liElement.id = country.cca3;
         liElement.className =
-            "cursor-pointer w-[fit-content] list-disc text-green hover:underline";
-        liElement.textContent = country.name.common;
+            "cursor-pointer w-[fit-content] text-green hover:underline flex flex-row  items-center gap-1";
+        // liElement.textContent = country.name.common;
+        liElement.innerHTML = `<img src = "${country.flags.png}" class = "h-3">${country.name.common}`
 
         // Append the list item to the border list
         document.getElementById("border-list").appendChild(liElement);
@@ -165,6 +164,7 @@ async function fetchWeatherDetails(cityName) {
         .then((response) => response.json())
         .then((data) => {
             displayWeatherDetails(data);
+            console.log(data)
         });
 }
 
@@ -175,12 +175,17 @@ async function fetchWeatherDetails(cityName) {
  */
 function displayWeatherDetails(data) {
     const weatherDetails = document.getElementById("weather-details");
-    weatherDetails.innerHTML = `<h2>City's Name: ${data.location.name}</h2> 
+    //Gets capital name from selector element
+    const capitalName = CAPITAL_SELECTOR.value
+    // Index of the slice point
+    const slicePoint = CAPITAL_SELECTOR.value.indexOf("[")
+    // data.location.name
+    weatherDetails.innerHTML = `<h2>City's Name: ${capitalName.slice(0,slicePoint)}</h2> 
     <p>Temperature: ${data.current.temp_c} °C</p>
     <p>Weather Condition: ${data.current.condition.text}
     </p>
-    <div class = "flex flex-col items-center content-center"><img src="${data.current.condition.icon}" alt="Current weather picture."></div>
     <p>Wind: ${data.current.wind_kph} km/h Direction: ${data.current.wind_dir}</p>
+    <div class = "flex flex-col items-center content-center"><img src="${data.current.condition.icon}" alt="Current weather picture."></div>
     `;
 }
 
@@ -364,6 +369,16 @@ const blinking = () => {
         contentDetails.classList.remove("blinking");
     }, 1000);
 }
+/**
+ * Removes 'hidden' class from div with content-details and map id
+ * @param {string} Selector - The target div's id.
+ */
+const unhideDetailElement = (selector) => {
+    // Select the content details element removes 'hidden' class and adds the 'flex' class
+    const contentDetails = document.querySelector(`#${selector}`)
+    contentDetails.classList.remove("hidden")
+    
+}
 
 /**
  * Displays the selected capital's details by fetching relevant data and updating the UI.
@@ -381,8 +396,17 @@ const displayCat = (nodeName, targetText, targetId) => {
         targetId = CAPITAL_SELECTOR[targetId].id;
     }
 
+    //Removes 'hidden' class from 'left-ear','right-ear','content-details','map' and 'neighbour-title' div element.
+    unhideDetailElement("left-ear")
+    unhideDetailElement("right-ear")
+    unhideDetailElement("content-details")
+    unhideDetailElement("map")
+    unhideDetailElement("neighbour-title")
+    
+
     // Fetch country details using the target ID
     fetchCountryDetails(targetId).then((country) => {
+        console.log(country)
         // Update the flag image source with the country's flag
         document.querySelector("#flag").src = country.flags.png;
 
@@ -457,11 +481,11 @@ window.addEventListener("click", (event) => {
         // Call displayCat function with the nodeName, and the classList's second item as both targetText and targetId
         displayCat(
             event.target.nodeName,
-            event.target.classList[1],
+            event.target.classList[2],
             event.target.classList[1]
         );
         // Modify the capital selector without using a button
-        capitalSelectorModifier(false, event.target.textContent);
+        capitalSelectorModifier(false, event.target.classList[1]);
     }
 });
 
