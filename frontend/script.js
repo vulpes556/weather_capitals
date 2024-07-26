@@ -273,7 +273,7 @@ async function showExchangeRate(currencyCode) {
     );
 
     // Extract the exchange rate from the fetched data
-    const exchangeRate = data.data[currencyCode];
+    const exchangeRate = data.data[currencyCode].toFixed(3);
 
     // Select the HTML element to display the exchange rate
     const spanEl = document.getElementById("exchange-rate");
